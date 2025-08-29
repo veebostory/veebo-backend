@@ -1,0 +1,12 @@
+{
+    "database": {
+        "url":  "mongodb+srv://adn-cleaning:adncleaning12345678@cluster0.ys7lury.mongodb.net/?retryWrites=true&w=majority"  
+    },
+    "jwt": {
+        "secretOrKey": "PROD_SECRET",
+        "issuer": "service",
+        "audience": "service.in",
+        "expiresIn": "7d",
+        "algorithm": "HS256"
+    }
+}

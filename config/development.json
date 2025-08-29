@@ -1,0 +1,12 @@
+{
+    "database": {
+        "url": "mongodb+srv://primaxtradingltd:WDJ0KyWCiYlyVFi3@cluster0.dhrjoh6.mongodb.net/?retryWrites=true&w=majority"
+    },
+    "jwt": {
+        "secretOrKey": "PROD_SECRET",
+        "issuer": "service",
+        "audience": "service.in",
+        "expiresIn": "7d",
+        "algorithm": "HS256"
+    }
+}
