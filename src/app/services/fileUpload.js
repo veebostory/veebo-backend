@@ -58,9 +58,9 @@ const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 cloudinary.config({
-    cloud_name: 'dhbuexm4s',
-    api_key: '765533787579636',
-    api_secret: '0Q0rQcBhn8cV8ChY_zDMFogDPL8'
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
 });
 // s3 = new S3Client({
 //     credentials: {
@@ -85,6 +85,8 @@ module.exports = {
     uploadFromUrl: async (url) => {
         console.log(url)
         try {
+
+            console.log(cloudinary)
             const result = await cloudinary.uploader.upload(
                 url,
                 { folder: "story_images" }
