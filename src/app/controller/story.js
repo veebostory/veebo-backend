@@ -48,17 +48,19 @@ module.exports = {
         });
         const Imgurl = imageCompletion.data[0].url
         console.log(Imgurl)
-        const axiosResponse = await axios({
-          url: Imgurl, //your url
-          method: "GET",
-          responseType: "arraybuffer",
-        });
-        const uuu = Imgurl.split('?')[0]
-        const Key = uuu.split('/')[uuu.split('/').length - 1]
-        const file = await putS3Object({ Body: axiosResponse.data, Key })
+        // const axiosResponse = await axios({
+        //   url: Imgurl, //your url
+        //   method: "GET",
+        //   responseType: "arraybuffer",
+        // });
+        // const uuu = Imgurl.split('?')[0]
+        // const Key = uuu.split('/')[uuu.split('/').length - 1]
+        // const file = await putS3Object({ Body: axiosResponse.data, Key })
+
+        const result = await uploadFromUrl(Imgurl)
         const data = {
           story: storyCompletion.choices[0],
-          image: file,
+          image: result.secure_url,
           title: payload?.storyname,
         };
         const newStory = new STORY({

@@ -32,7 +32,7 @@ router.get("/userip", user.getIp);
 router.post("/postip", user.postip);
 router.get("/getuserbyid", isAuthenticated(["USER"]), user.getuserbyid);
 router.post("/user/fileupload", upload.single("file"), user.fileUpload);
-router.post("/user/fileupload2", user.urlToupload);
+router.post("/user/fileupload2", user.urlToupload2);
 router.put("/updateplaninuser", isAuthenticated(["USER"]), user.updateplaninuser);
 //  router.get("/deviceMiddleware",isAuthenticated(["USER"]), user.deviceMiddleware);
 
