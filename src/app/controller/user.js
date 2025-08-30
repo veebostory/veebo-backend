@@ -15,7 +15,8 @@ const moment = require("moment");
 const { v4: uuidv4 } = require("uuid");
 const user = require("../model/user");
 const { default: axios } = require("axios");
-const { uploadFromUrl, putS3Object } = require("../services/urlToUplod");
+const { putS3Object } = require("../services/urlToUplod");
+const { uploadFromUrl } = require("../services/fileUpload");
 
 module.exports = {
   postip: async (req, res) => {
@@ -805,10 +806,15 @@ module.exports = {
 
   fileUpload: async (req, res) => {
     try {
-      let key = req.file && req.file.key;
+      // let key = req.file && req.file.key;
+      // return response.ok(res, {
+      //   message: "File uploaded.",
+      //   file: `${process.env.ASSET_ROOT}/${key}`,
+      // });
+      console.log(req)
       return response.ok(res, {
         message: "File uploaded.",
-        file: `${process.env.ASSET_ROOT}/${key}`,
+        file: req.file.path,
       });
     } catch (error) {
       return response.error(res, error);
@@ -827,6 +833,18 @@ module.exports = {
       return response.ok(res, {
         message: "File uploaded.",
         file: d,
+      });
+    } catch (error) {
+      return response.error(res, error);
+    }
+  },
+
+  urlToupload2: async (req, res) => {
+    try {
+      const result = await uploadFromUrl(req.body.url)
+      return response.ok(res, {
+        message: "File uploaded.",
+        file: result,
       });
     } catch (error) {
       return response.error(res, error);
