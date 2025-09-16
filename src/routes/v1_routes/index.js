@@ -55,6 +55,7 @@ router.post("/profile/changePassword", isAuthenticated(["USER", "ADMIN"]), user.
 
 //story
 router.post("/generate_story", isAuthenticated(["USER"]), story.generate_story);
+router.post("/newGenerate_story", isAuthenticated(["USER"]), story.newGenerate_story);
 router.get("/getallstory", story.getallstory);
 router.get("/getstory/:id", isAuthenticated(["USER"]), story.getstory);
 
