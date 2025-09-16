@@ -17,7 +17,7 @@ const openai = new OpenAI({
 // });
 // const openai = new OpenAIApi(configuration);
 module.exports = {
-  oldgenerate_story: async (req, res) => {
+  newGenerate_story: async (req, res) => {
     const serviceid2 = await User.findById(req.user.id);
     if (serviceid2.write === 0 || serviceid2.paymentid) {
       console.log(serviceid2)
